@@ -1,0 +1,12 @@
+// leaning about how the way that the foreign key works and how to use it in the postgresql
+
+create table movies(
+	movie_id serial primary key,
+	movie_name varchar(50) not null,
+	movie_length int,
+	movie_language varchar(20),
+	age_certificate varchar(10),
+	release_date date,
+	director_id serial references directors(director_id)
+	
+);
