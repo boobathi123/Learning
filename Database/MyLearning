@@ -10,3 +10,18 @@ create table movies(
 	director_id serial references directors(director_id)
 	
 );
+drop table if exists movies_revenues;
+create table movies_revenues(
+	revenue_id serial primary key,
+	movie_id int references movies(movie_id),
+	revenue_domestic numeric(10,2),
+	revenue_international numeric(10,2)
+);
+
+--creating movies_actors 
+
+create table movies_actos(
+	 movie_id int references movies(movie_id),
+	 actor_id int references actors(actor_id),
+	 primary key(movie_id,actor_id)
+);
