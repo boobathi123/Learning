@@ -67,3 +67,122 @@ INSERT INTO directors (first_name,last_name,date_of_birth,nationality) VALUES
 ('Kar Wai','Wong','1958-07-17','Chinese'),
 ('Robert','Zemeckis','1952-05-14','American'),
 ('Yimou','Zhang','1950-04-02','Chinese');
+
+
+
+create table customers(
+	customer_id serial primary key,
+	first_name varchar(50),
+	last_name varchar(50),
+	email varchar(50),
+	age int
+);
+
+insert into customers(first_name,last_name,email,age) values(
+'adnan','waheed','a@b.com',40
+);
+
+insert into customers(first_name,last_name) values('adnad','wahad'),('john','adams'),('Linda','abe');
+select * from customers;
+
+
+insert into customers(first_name) values('adam');
+
+
+--after the insert, lets returns all rows
+
+insert into customers(first_name) values('JOSEPH') returning customer_id;
+
+
+--update data in the table
+update customers set email = 'a2@gmail.com' where customer_id = 7;
+
+--update multiple columns
+update customers set email = 'a4@gmail.com', age = 30 where customer_id = 1;
+
+
+--use returning to get updated rows
+
+update customers set email = 'a@b.com' where customer_id = 2 returning *;
+
+
+--update all records in a table
+
+select * from customers;
+
+update customers set is_enable = 'y';
+
+--deleting records from a table
+
+delete from customers where customer_id = 9;
+
+select * from customers;
+
+--using  upsert
+
+/*
+	The main idea is that when you insert a new row into the table, Postgresql will update the row if it already exist
+	otherwise, it will insert the new row
+
+	that is why we call the action is upsert ( the combination of update or insert )
+*/
+
+create table t_tags(
+	id serial primary key,
+	tag text unique,
+	update_date timestamp default now()
+);
+
+insert into t_tags(tag) values('pen'),('pencil');
+select * from t_tags;
+
+--2025-02-06 00:06:39.604972
+--Lets insert a record, on conflict do nothing
+
+insert into t_tags (tag) values('pen') on conflict (tag) do nothing ;
+
+ -- lets insert a record on conflict set new values
+
+ insert into t_tags (tag) values ('pen1') on conflict(tag) do update set tag=excluded.tag,update_date=now();
+
+ select * from t_tags;
+
+ --Quering data
+ --selecting all the data from table
+ select * from movies;
+
+ --concatenating two data
+
+ select first_name || last_name from actors;
+
+ select first_name || " " || last_name from actors;
+
+ --making alias
+
+ select first_name || " "|| last_name as "full Name" from actors;
+
+ --geting the output without using table column
+
+ select 2*10;
+
+ --using orderby to sort records (asc & desc)
+
+ select * from movies order by asc ;
+
+ --sorting all movies names according to its release date
+
+ select * from movies order by release_date desc;
+
+ --sorting based on multiple columns
+
+ select * from actors order by release_date desc, movie_name asc ;
+
+ --length() returns the length of the particulare value
+
+ select first_name, length(first_name) as len from actors order by len desc;
+
+ --where with and and or 
+
+ select * from movies where movie_lang = 'japanese';
+
+ select * from movies where movie_lang = 'English' and age_certificate = 18;
