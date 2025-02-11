@@ -186,3 +186,7 @@ insert into t_tags (tag) values('pen') on conflict (tag) do nothing ;
  select * from movies where movie_lang = 'japanese';
 
  select * from movies where movie_lang = 'English' and age_certificate = 18;
+
+//using limit and offset ( getting the top 5 rated movies according to movie_domestic)
+
+select * from movies order by movies_domestic desc limit 5 offset 4;
