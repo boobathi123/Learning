@@ -1,3 +1,44 @@
+/*
+    Learning about how the way that the running flow of each method should executed inside the stack memory segment
+*/
+
+Example program for method returnning;
+
+Finding nth fibonnoci number:
+
+public class First{
+    public int finder(int n){
+    if(n <= 0 ) return n;
+
+    return finder(n-1)+finder(n-2);
+}    
+    public static void main(String args[]){
+    }
+}
+
+//  Learning about dp approaches :
+
+House robber
+
+class Main{
+    public int finder(int a[],int size){
+if(size == 0 ) return a[size];
+if(size < 0 ) return 0;
+
+int getting = a[size]+finder(a,size-2);
+int notGetting = 0+finder(a,size-1);
+
+return Math.max(getting,notGetting);
+}
+    public static void main(String args[]){
+    int house[]= {1,2,3,4,5};
+    finder(a,house.length-1);
+}
+}
+
+
+//Getting into the OOPS concepts
+    
 class Car{
     private String doors;
     private String driver;
