@@ -93,3 +93,199 @@ class Main{
         System.out.println(car.getDriver());
     }
 }
+
+//using constructor
+class SmartPhone{
+    private String brand ;
+    public SmartPhone(){
+        brand = "apple";
+    }
+
+    public String getBrand(){
+        return brand;
+    }
+}
+
+class Main{
+    public static void main(String args[]){
+        SmartPhone phone = new SmartPhone();
+        System.out.print(phone.getBrand());
+    }
+}
+
+
+//car based example of inheritance
+
+class Vehicle{
+    private String engine;
+    private int wheels;
+    private int seats;
+    private int fuelTank;
+    private  String lights;
+
+    public Vehicle(){
+        engine = "petrol";
+        wheels = 2;
+        seats = 2;
+        fuelTank = 14;
+        lights = "LED";
+
+    }
+
+    public Vehicle(String engine, int wheels, int seats, int fuelTank, String lights) {
+        this.engine = engine;
+        this.wheels = wheels;
+        this.seats = seats;
+        this.fuelTank = fuelTank;
+        this.lights = lights;
+    }
+
+    public String getEngine() {
+        return engine;
+    }
+
+    public void setEngine(String engine) {
+        this.engine = engine;
+    }
+
+    public int getWheels() {
+        return wheels;
+    }
+
+    public void setWheels(int wheels) {
+        this.wheels = wheels;
+    }
+
+    public int getSeats() {
+        return seats;
+    }
+
+    public void setSeats(int seats) {
+        this.seats = seats;
+    }
+
+    public int getFuelTank() {
+        return fuelTank;
+    }
+
+    public void setFuelTank(int fuelTank) {
+        this.fuelTank = fuelTank;
+    }
+
+    public String getLights() {
+        return lights;
+    }
+
+    public void setLights(String lights) {
+        this.lights = lights;
+    }
+}
+
+class Truck{
+    public String steering;
+    public String musicSystem;
+    public String airConditioner;
+    public int container;
+}
+
+class Car{
+    public String steering;
+    public String musicSystem;
+    public String airConditioner;
+    public String fridge;
+    public String entertainmentSystem;
+
+}
+
+class Bike extends Vehicle{
+    public String handle;
+
+    public Bike(){
+        handle = "hi";
+    }
+
+    public Bike(String handle) {
+        this.handle = handle;
+    }
+
+    public Bike(String engine, int wheels, int seats, int fuelTank, String lights, String handle) {
+        super(engine, wheels, seats, fuelTank, lights);
+        this.handle = handle;
+    }
+}
+
+class Main{
+    public static void main(String args[]){
+        Bike bike = new Bike();
+        bike.handle = "Short";
+
+
+        System.out.println(bike.getWheels());
+    }
+}
+
+
+class Animal{
+    protected float heightInFeet;
+    protected float weightInKilos;
+    protected String animalType;
+    protected String bloodType;
+
+    public Animal(){
+        this.heightInFeet = 0;
+        this.weightInKilos = 0;
+        this.animalType = "unknown";
+        this.bloodType = "unknown";
+    }
+
+    public String showInfo(){
+        return "Animal [heightInFeet = "+this.heightInFeet+" , weightInKilos="+weightInKilos+" , animalType = "+animalType+" , bloodType ="+bloodType+"]";
+    }
+}
+
+class Reptile extends Animal{
+    protected String skin,egg;
+    protected boolean backbone;
+
+    public Reptile(){
+        heightInFeet= 5;
+        weightInKilos = 20;
+        animalType = "Reptile";
+        bloodType = "Cold";
+        this.skin = "Dry skin";
+        this.backbone = true;
+        this.egg = "soft shelled";
+    }
+
+    public String showInfo(){
+        return "Reptile [skin= "+skin+" , egg="+egg+" , backbone= "+backbone+" ,heightInFeet = "+heightInFeet+" weightInkilos= "+weightInKilos+" , animalType= "+animalType+" ,bloodType= "+bloodType;
+    }
+}
+
+class Crocodile extends Reptile{
+    public Crocodile(){
+        super();
+        super.egg = "hard shelled";
+    }
+
+    public String showInfo(){
+        return " Crocodile [ skin = "+skin+" , egg= "+egg+", backbone = "+backbone+" , heightInFeet ="+heightInFeet+" , weightInKilos= "+weightInKilos+" , animalType= "+animalType+" , bloodType= "+bloodType;
+    }
+}
+
+class Fish extends Animal{
+    protected boolean waterBone = true;
+    protected boolean gills = true;
+
+    public Fish(){
+        animalType = "fish";
+        this.waterBone=true;
+        this.gills = true;
+
+    }
+
+    public String showInfo(){
+        return "Fish [waterBone = "+waterBone+" , gills= "+gills;
+    }
+}
+
