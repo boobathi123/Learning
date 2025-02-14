@@ -288,4 +288,37 @@ class Fish extends Animal{
         return "Fish [waterBone = "+waterBone+" , gills= "+gills;
     }
 }
+class Shop{
+    Lock lock = new Lock();
+    
+    
+    public void shopStatus(){
+        if(lock.isLocking()){
+            System.out.printf("shop is locked");
+        }else{
+            System.out.printf("Shop is open");
+        }
+    }
+    
+    
+    class Lock{
+        private boolean locking = true;
+        
+        public boolean isLocking() {
+            return locking;
+        }
+        
+        public void setLocking(boolean locking){
+            this.locking = locking;
+        }
+    }
+}
+
+
+class Main{
+    public static void main(String args[]){
+        Shop shop = new Shop();
+        shop.shopStatus();
+    }
+}
 
