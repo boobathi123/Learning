@@ -355,3 +355,159 @@ class Main {
     }
 }
 
+Getting into the Generics
+
+/*
+    T - Type
+    E - element
+    K - Key
+    N - Number
+    V - value
+*/
+
+
+// class Data{
+//     private Object object;
+    
+//     public Data(Object object){
+//         this.object = object;
+//     }
+    
+//     public String toString(){
+//         return (String) object;
+//     }
+    
+//     public Object getObject(){
+//         return object;
+//     }
+// }
+
+// class GenericData<T>{
+//     private T data;
+    
+//     public GenericData(T data){
+//         this.data = data;
+//     }
+    
+//     public T getData(){
+//         return data;
+//     }
+// }
+
+// import java.util.*;
+// class Data <K,V extends Name>{
+//     private K key;
+//     private V value;
+    
+    
+//     public Data(K key,V value){
+//         this.key = key;
+//         this.value = value;
+//     }
+    
+//     public K getKey(){
+//         return key;
+//     }
+//     public V getValue(){
+//         return value;
+//     }
+    
+//     public String toString(){
+//         return " Data { key ="+key+" value="+value+"}";
+//     }
+    
+//     public <E extends Number,N> void display(E element,N number){
+//         System.out.println("Element: "+element+" Number: "+number);
+//     }
+// }
+
+// class Name{
+//     private String name;
+    
+//     public Name(String name){
+//         this.name = name;
+//     }
+    
+//     public String toString(){
+//         return this.name;
+//     }
+// }
+
+// class Second{
+//     public <E> void printListData(List<E> list){
+//         for(E element: list){
+//             System.out.println(element);
+//         }
+//     }
+// }
+// class Main{
+//     public static void main(String args[]){
+//         // List<Data> elements = new LinkedList();
+//         // elements.add(new Data("chaand"));
+//         // elements.add(new Data('E')); 
+        
+//         // for(Data e: elements){
+//         //     System.out.print(e);
+//         // }
+        
+//         // GenericData<String> genericData = new GenericData<String>("some data");
+//         // String s = genericData.getData();
+        
+//         // System.out.print(s);
+        
+//         // Data<Integer,String> data = new Data(10,"chaand");
+//         // System.out.println("Key: "+data.getKey()+" value= "+data.getValue());
+//         // data.display(20,40);
+        
+//         List<Integer> list1 = new ArrayList(Arrays.asList(12,14,15));
+    
+//         new Second().printListData(list1);
+//     }
+// }
+
+// import java.util.*;
+
+// class Vehicle{
+//     private int Id;
+//     public Vehicle(int id){
+//         this.Id = id;
+//     }
+    
+//     public String toString(){
+//         return "Vehicle [ id : "+this.Id+" ]";
+//     }
+// }
+
+// class Car extends Vehicle{
+//     private String modelName;
+//     public Car(int id,String modelName){
+//         super(id);
+//         this.modelName = modelName;
+//     }
+//     public String toString(){
+//         return "car[ id: "+super.toString()+" name: "+modelName+" ]";
+//     }
+// }
+
+// class Main{
+//     public static void main(String args[]){
+//         List<Vehicle> list = new ArrayList();
+//         list.add(new Car(1,"oooo"));
+//         list.add(new Vehicle(2));
+        
+//         System.out.print(list);
+//     }
+// }
+
+
+//Getting into the collections
+
+import java.util.*;    
+class Main{
+    public static void main(String args[]){
+        List<String> list = new ArrayList(Arrays.asList("shankar","siva"));
+        
+        System.out.print(list.get(0));
+    }
+}
+
