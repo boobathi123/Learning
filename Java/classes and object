@@ -322,3 +322,36 @@ class Main{
     }
 }
 
+//static and non static inner classes
+
+class ToyotaCars {
+    public static class Brand {
+        public static String brandName = "Toyota";
+
+        public static void tagLine() {
+            System.out.println("Reliable cars");
+        }
+    }
+
+    public class NonStaticInner {
+        public void model(String model) {
+            System.out.println("Make of the car: " + model);
+        }
+    }
+
+    NonStaticInner nonObj = new NonStaticInner();
+
+    public NonStaticInner getObj() {
+        return nonObj;
+    }
+}
+
+class Main {
+    public static void main(String args[]) {
+        ToyotaCars obj = new ToyotaCars();
+        ToyotaCars.NonStaticInner obj1 = obj.getObj(); // Corrected object reference
+
+        obj1.model("aadi"); // Corrected variable name
+    }
+}
+
