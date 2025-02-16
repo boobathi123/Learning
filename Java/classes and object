@@ -511,3 +511,118 @@ class Main{
     }
 }
 
+import java.util.*;
+
+// class IntWrapper{
+//     public int num;
+    
+//     public int getNum(){
+//         return num;
+//     }
+    
+//     public void setNum(int num){
+//         this.num = num;
+//     }
+    
+//     public IntWrapper(int num){
+//         this.num = num;
+//     }
+// }
+// //auto boxing autounboxing
+// class Main{
+//     public static void main(String args[]){
+//         ArrayList<IntWrapper> numberlist = new ArrayList();
+        
+//         numberlist.add(new IntWrapper(2));
+        
+//         System.out.println(numberlist.get(0).num);
+//     }
+// }
+
+// class Main{
+//     public static void main(String args[]){
+//         Stack<Integer> numbers = new Stack();
+//         numbers.push(25);
+//         numbers.push(5);
+        
+//         Iterator<Integer> it = numbers.listIterator();
+//         while(it.hasNext()) {
+//             System.out.println(it.next());
+//         }
+//     }
+// }
+
+// class Name implements Comparable<Name>{
+//     private String name;
+    
+//     public Name(String name){
+//         this.name = name;
+//     }
+    
+//     public String toString(){
+//         return this.name;
+//     }
+    
+//     public int compareTo(Name obj){
+//         if(name.length() == obj.name.length()){
+//             return 0;
+//         }else if(name.length() > obj.name.length()){
+//             return 1;
+//         }
+//         else{
+//             return -1;
+//         }
+//     }
+// }
+
+
+// public class Main{
+//     public static void main(String args[]){
+//         List names = new LinkedList<>(Arrays.asList(new Name("cha"),new Name("ed"),new Name("John")));
+        
+//         names.sort(null);
+//         System.out.println(names);
+//     }
+// }
+
+
+class Data<K extends Integer,V extends String>{
+    private K key;
+    private V value;
+    
+    public Data(K key,V value){
+        this.key = key;
+        this.value = value;
+    }
+    
+    public String toString(){
+        return " Data { key"+key+" value= "+value;
+    }
+    
+    public K getKey(){
+        return this.key;
+    }
+    
+    public V getValue(){
+        return this.value;
+    }
+    
+}
+
+class Main{
+    public static void main(String args[]){
+        Set<Data<Integer,String>> set = new TreeSet(new Comparator<Data<Integer,String>>(){
+          public int compare(Data<Integer,String> obj1,Data<Integer,String> obj2) {
+              return obj1.getKey() - obj2.getKey();
+          } 
+        });
+        set.add(new Data<>(1,"chaand"));
+        set.add(new Data<>(2,"shankar"));
+        set.add(new Data<>(3,"zebra"));
+        
+        
+        for(Data data: set){
+            System.out.print(data);
+        }
+    }
+}
