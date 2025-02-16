@@ -626,3 +626,236 @@ class Main{
         }
     }
 }
+
+
+
+// //
+import java.util.*;
+
+
+
+
+
+
+// class MyCounter extends Thread{
+//     private int threadNo;
+    
+//     public MyCounter(int threadNo){
+//         this.threadNo = threadNo;
+//     }
+    
+//     public void run(){
+//         try{
+//         countMe();
+//         }
+//         catch(Exception e){
+//             System.out.println(e.getMessage());
+//         }
+//     }
+//     public void countMe() throws InterruptedException{
+//         for(int i = 0 ; i < 10 ;i++){
+//             Thread.sleep(500);
+//             System.out.println("Thread no: "+this.threadNo +" and iteration no: "+i);
+//         }
+//     }
+// }
+
+
+// class Main{
+//     public static void main(String args[]){
+//         MyCounter counter1 = new MyCounter(1);
+//         MyCounter counter2 = new MyCounter(2);
+//         long startTime = System.currentTimeMillis();
+//         counter1.run();
+//         counter2.run();
+//         long endTime = System.currentTimeMillis();
+//         System.out.println("Total time required for processing: "+(endTime-startTime));
+        
+//     }
+// }
+
+
+class MyCounter implements Runnable{
+    private int threadNo;
+    
+    public MyCounter(int threadNo){
+        this.threadNo = threadNo;
+    }
+    
+    @Override
+    
+    public void run(){
+        for(int i = 0 ;i < 10; i++){
+            try{
+                Thread.sleep(500);
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+             System.out.println("Thread No: "+threadNo+" and iteration no: "+i);
+        }
+        
+       
+    }
+}
+
+// class Main{
+//     public static void main(String args[]){
+//         // Thread thread1 = new Thread(new MyCounter(1));
+//         // Thread thread2 = new Thread(new MyCounter(2));
+//         // thread1.start();
+//         // thread2.start();
+        
+//         // Thread thread = new Thread(new Runnable(){
+//         //     public void run(){
+//         //      for(int i = 0 ;i < 10; i++){
+//         //     try{
+//         //         Thread.sleep(500);
+//         //     }catch(Exception e){
+//         //         e.printStackTrace();
+//         //     }
+//         //      System.out.println(" and iteration no: "+i);
+//         //      }
+//         // }
+//         // });
+        
+//         // thread.start();
+        
+//         new Thread(new Runnable(){
+//             @Override
+//             public void run(){
+//                 for(int i = 0; i < 10 ; i++){
+//                     try{
+//                         Thread.sleep(500);
+//                     }catch(Exception e){
+//                         e.printStackTrace();
+//                     }
+//                     System.out.println(i*2);
+//                 }
+//             }
+//         }).start();
+//     }
+// }
+
+
+
+
+
+// class Main{
+//     public static int counter = 0;
+    
+//     public static void main(String args[]){
+//         new Thread(new Runnable(){
+//             @Override
+//             public void run(){
+//                 for(int i = 1; i < 10000; i++){
+//                     Main.counter+=1;
+//                 }
+//             }
+//         }).start();
+        
+//         System.out.print(counter);
+//     }
+// }
+
+// class Brackets{
+//     public void generate(){
+//         for(int i = 1; i <= 20; i++){
+//             if(i <= 10){
+//                 System.out.print("[");
+//             }else{
+//                 System.out.print("]");
+//             }
+//         }
+       
+//     }
+    
+    
+// }
+// class Main{
+//     public static void main(String args[]){
+//         Brackets brackets = new Brackets();
+        
+//         new Thread(new Runnable(){
+//             @Override
+//             public void run(){
+//                 for(int i=0;i < 5; i++){
+//                     brackets.generate();
+//                     System.out.println();
+//                 }
+//             }
+//         }).start();
+//     }
+// }
+
+//Lambda expressions
+
+interface Lambda{
+    public void demo();
+}
+
+
+class Data{
+    String name;
+    
+    public Data(String name){
+        this.name = name;
+    }
+    
+    public String getName(){
+        return name;
+    }
+    
+    public String toString(){
+        return " Name : "+this.name;
+    }
+}
+public class Main{
+    public static void main(String args[]){
+        // new Lambda(){
+        //     @Override
+        //     public void demo(){
+        //         System.out.println("demo piece");
+        //     }
+        // }.demo();
+        
+        // Lambda lambda = () -> System.out.println("statement 1");
+        
+        // lambda.demo();
+        
+        // Thread thread = new Thread(() -> System.out.println("my state"));
+        // thread.start();
+        
+        List<Data> list = new ArrayList();
+        
+        
+        list.add(new Data("Ed"));
+        list.add(new Data("Gia"));
+        list.add(new Data("chand"));
+        
+        for(Data temp : list){
+            System.out.println(temp);
+        }
+        
+        Collections.sort(list,new Comparator<Data>(){
+            public int compare(Data o1,Data o2){
+                return o1.getName().compareTo(o2.getName());
+            }
+        });
+        
+        System.out.println();
+        
+        for(Data temp: list){
+            System.out.println(temp);
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
