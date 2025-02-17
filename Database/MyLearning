@@ -190,3 +190,83 @@ insert into t_tags (tag) values('pen') on conflict (tag) do nothing ;
 //using limit and offset ( getting the top 5 rated movies according to movie_domestic)
 
 select * from movies order by movies_domestic desc limit 5 offset 4;
+
+
+-- create
+CREATE TABLE EMPLOYEE (
+  empId INTEGER PRIMARY KEY,
+  name TEXT NOT NULL,
+  dept TEXT NOT NULL
+);
+
+-- insert
+INSERT INTO EMPLOYEE VALUES (0001, 'Clark', 'Sales');
+INSERT INTO EMPLOYEE VALUES (0002, 'Dave', 'Accounting');
+INSERT INTO EMPLOYEE VALUES (0003, 'Ava', 'Sales');
+
+-- fetch
+SELECT * FROM EMPLOYEE fetch last row only;
+
+
+select * from movies order by movie_length desc fetch first 5 row only;
+
+-- Getting the  first 5 movie sfrom the 5 th record onward long movie movie_length
+select * from movies order by movie_length desc fetch first 5 row only offset 4;
+
+--in and not IN
+
+--that two operators are used to check if a value matches or not matches in a list
+
+select * from movies where movie_lang in ("English","Chinese","Japanse") order by movie_lang;
+
+
+--to Retrieve the data within the range
+
+select * from actors where dataofbirth between '1991-01-01' and '1995-12-31';
+
+--finding release date 
+
+select * from movies from release_date between '1998-01-01' and '1992-12-31' order by movie_date desc;
+
+
+--is Null using missing value of data coming to other is not null used to check non completenes of the data
+
+select * from actors where data_of_birth is null order by date_of_birth;
+
+
+select * from actors where date_of_birth is null or first_name is null;
+
+--concatenation operator
+
+select 'hello' || 'world' as firstName ;
+
+
+--Like and ILike used for pattern matching
+
+--special characters ( %  , _)
+
+--to concat two columns
+
+select concat(firstName,lastName) as "ActorName" from actors;
+
+
+select 'hello' like 'hello';
+
+select 'hello' like 'h%';
+
+select 'hello' like 'hell%';
+
+
+--DataTypes
+create table table_boolean(product_id serial primary key,is_available boolean not null);
+
+insert into table_boolean(is_available) value(true);
+
+
+
+
+
+
+
+
+
