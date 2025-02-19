@@ -298,6 +298,189 @@ drop domain positive_numeric;
 create type address as (city varchar(50),country varchar(20));
 
 
+--primary key
+
+create table table_items(
+  item_id integer primary key,
+  item_name varchar(100) not null
+
+
+--dropping a constraint
+
+alter table tablename drop constraint cname;
+
+alter table table_items add constraint primary key(item_id);
+
+
+--primary key constraint on multiple columns = Composite primary key
+
+create table t_grades(
+  course_id varchar(50) not null,
+  student_id varchar(50) not null,
+  grade int not null,
+  
+  primary key(course_id,student_id)
+);
+
+
+--foreign key constraint
+
+create table table_name(
+
+  foreign key() references table_name(column_name)
+);
+
+
+create table t_products(
+  product_id int primary key,
+  product_name varchar(100) not null,
+  supplier_id int not null,
+  foreign key(supplier_id) references t_suppliers (supplier_id)
+);
+
+
+create table t_suppliers(
+  supplier_id int primary key,
+  supplier_name varchar(100) not null
+);
+
+--updatation
+
+update t_products set suplier_id = 1 where product_id = 1;
+
+
+--dropping
+
+alter table tablename drop constraint cname;
+
+alter table t_products drop constraint t_products_supplier_id_fkey;
+
+--adding foreign key 
+
+alter table tablename add constraint cname foreign key (columnname) references table2_name(columnname);
+
+
+alter table prices add constraint price_check check(price > 0 and discount >= 0 and price >  discount);
+
+ 
+
+
+alter table prices rename constraint price_check to price_discount_check;
+
+alter table prices drop constraint price_discount_check;
+
+
+--Sequences
+
+
+create sequence if not exists test_seq;
+
+select nextval('test_seq'); // return the value(1..2)
+
+select currval('test_seq');
+
+--set sequence
+select setval('test_seq',100);
+
+select setval('test_seq',200,false);
+
+create sequence if not exists test_seq2 start with 200;
+
+
+create sequence if not exists test_seq3 increment 50 minvalue 400 maxvalue 6000 start with 500;
+
+--specifying the data type of a sequence
+
+create sequence if not exists test_seq_smallint as int
+
+--creating decending sequence
+create sequence seq_asc
+
+select nextval('seq_asc')
+
+create sequence seq_des increment -1 minvalue 1 maxvalue 3 start 3 cycle;
+
+
+--for --dropping
+
+drop sequence seq_name;
+
+
+--to altering already existing sequence (serial)
+
+alter sequence users_user_id_seq restart with 100;
+
+
+
+create sequence users start with 100 owned by users.user_id;
+
+alter table users alter column user_id set default nextval('users')
+
+--Listing all sequence
+select relname sequence_name from pg_class where relkind='S';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
