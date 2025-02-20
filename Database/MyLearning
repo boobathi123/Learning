@@ -421,6 +421,99 @@ select relname sequence_name from pg_class where relkind='S';
 
 
 
+create sequence table_seq not null start with 1;
+
+create table contacts{
+  contact_id text not null default('ID' || nextval('table_seq')),
+  contact_name varchar(50)
+}
+
+alter sequence table_seq owned by contacts.contact_id;
+
+
+--String functions
+select upper('shankar');
+
+--initcap
+
+select initcap('shankar is a boy');
+
+
+select initcap(concat(first_name,'',last_name)) as fullname from directors order by first_name;
+
+select left('shankar',1); --s
+
+--we can also give the negative number to get the last indices
+
+
+select left('abc',-2);
+
+
+
+--reverse
+
+reverse(string);
+
+select reverse('Amazing postgreSQL');
+
+--split_part
+
+select split_part('1,2,3',',',2);
+
+--to convert data from another type ::
+
+ltrim(string,[character]);
+rtrim(string,[character]);
+btrim(string,[character]);
+
+select trim(
+  leading from '  Amazing postgres'
+),trim(trailing from 'Amazing postgres  '),
+trim('  Amazing postgresql');
+
+
+---removing leading zeros from a number
+
+select trim(leading '0' from cast (000123456 as text));
+
+--lpad and rpad
+
+select lpad('Database',12,'*');
+select Rpad('Database',15,'*');
+
+
+--substring method
+
+select substring ('what a wonderful world' from 1 to 4);
+
+--replacing 
+
+select replace('abc xyz','z','l');
+
+--group by
+
+select count(movie_lang) from movies group by movie_lang;
+
+select age_certificate,sum(movie_length) from movies group by age_certificate;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
