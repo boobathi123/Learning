@@ -850,11 +850,95 @@ public class Main{
     }
 }
 
+--Threading and Lambda expressions
 
+import Mine.*;
 
+class First{
 
+    public static int balance = 0;
 
+    public static int counter = 0;
+    synchronized public void withdraw(int amount) throws Exception{
+        if(balance <= 0){
+            System.out.println("Waiting for amount to be update $"+amount);
+            wait(5000);
+        }
+        balance = balance-amount;
+        System.out.println("The current balance is: "+balance);
+    }
 
+    public void deposit(int amount){
+        synchronized(this){
+        System.out.println("We are depositing the amount in the bank $"+amount);
+        balance = balance +amount;
+        notify();
+        }
+    }
+    public static void main(String args[]) throws Exception{
+        // new Thread(new Runnable(){
+        //     public void run(){
+        //         for(int i = 1 ; i <= 5; i++){
+        //         new Bracket().generate();
+        //         System.out.println();
+        //         }
+        //     }
+        // }).start();
+
+        // new Thread(new Runnable(){
+        //     public void run(){
+        //         for(int i = 1 ; i <= 5; i++){
+        //         new Bracket().generate();
+        //         System.out.println();
+        //         }
+        //     }
+        // }).start();
+
+        // First main = new First();
+
+        // Thread thread1 = new Thread(new Runnable(){
+        //     @Override
+        //     public void run(){
+        //         try{
+        //         main.withdraw(100);
+        //         }catch(Exception e){
+        //             System.out.print(e.getMessage());
+        //         }
+        //     }
+        // });
+        // thread1.setName("thread1");
+        // thread1.start();
+        // Thread thread2 = new Thread(new Runnable(){
+        //     @Override
+        //     public void run(){
+        //             try{
+        //                 Thread.sleep(2000);
+        //             main.deposit(200);
+        //             }catch(Exception e){
+        //                 System.out.println(e.getMessage());
+        //             }
+                
+        //     }
+        // });
+        // thread2.setName("thread2");
+        // thread2.start();
+
+        Thread thread1 = new Thread(new Runnable(){
+            @Override
+            public void run(){
+                for(int i = 0; i < 1000; i++){
+                    counter++;
+                }
+            }
+        });
+
+        thread1.start();
+        // Thread.sleep(1000);
+        thread1.join();
+        System.out.println("counter1: "+counter);
+
+    }
+}
 
 
 
