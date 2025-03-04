@@ -940,6 +940,148 @@ class First{
     }
 }
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.util.Scanner;
+
+import Mine.*;
+
+class First{
+
+    public static int balance = 0;
+
+    public static int counter = 0;
+    synchronized public void withdraw(int amount) throws Exception{
+        if(balance <= 0){
+            System.out.println("Waiting for amount to be update $"+amount);
+            wait(5000);
+        }
+        balance = balance-amount;
+        System.out.println("The current balance is: "+balance);
+    }
+
+    public void deposit(int amount){
+        synchronized(this){
+        System.out.println("We are depositing the amount in the bank $"+amount);
+        balance = balance +amount;
+        notify();
+        }
+    }
+    public static void main(String args[]) throws Exception{
+        // new Thread(new Runnable(){
+        //     public void run(){
+        //         for(int i = 1 ; i <= 5; i++){
+        //         new Bracket().generate();
+        //         System.out.println();
+        //         }
+        //     }
+        // }).start();
+
+        // new Thread(new Runnable(){
+        //     public void run(){
+        //         for(int i = 1 ; i <= 5; i++){
+        //         new Bracket().generate();
+        //         System.out.println();
+        //         }
+        //     }
+        // }).start();
+
+        // First main = new First();
+
+        // Thread thread1 = new Thread(new Runnable(){
+        //     @Override
+        //     public void run(){
+        //         try{
+        //         main.withdraw(100);
+        //         }catch(Exception e){
+        //             System.out.print(e.getMessage());
+        //         }
+        //     }
+        // });
+        // thread1.setName("thread1");
+        // thread1.start();
+        // Thread thread2 = new Thread(new Runnable(){
+        //     @Override
+        //     public void run(){
+        //             try{
+        //                 Thread.sleep(2000);
+        //             main.deposit(200);
+        //             }catch(Exception e){
+        //                 System.out.println(e.getMessage());
+        //             }
+                
+        //     }
+        // });
+        // thread2.setName("thread2");
+        // thread2.start();
+
+        // Thread thread1 = new Thread(new Runnable(){
+        //     @Override
+        //     public void run(){
+        //         for(int i = 0; i < 1000; i++){
+        //             counter++;
+        //         }
+        //     }
+        // });
+
+        // thread1.start();
+        // // Thread.sleep(1000);
+        // thread1.join();
+        // System.out.println("counter1: "+counter);
+        
+
+        // File file = new File("./Mine/myFile.txt");
+        // file.createNewFile();
+
+        // System.out.println("File created");
+
+        // String os = System.getProperty(("os.name"));
+        // System.out.print(os);
+
+        // try(BufferedWriter bw = new BufferedWriter(new FileWriter("myFile.txt",true))){
+        //         bw.write("shankaran");
+        // }catch(Exception e){
+        //         e.printStackTrace();
+        // }
+        // File file = new File("myFile.txt");
+        // try(BufferedReader br = new BufferedReader(new FileReader(file))){
+        //     String line;
+        //     while((line = br.readLine())!=null){
+        //         System.out.println(line);
+        //     }
+
+        // }catch(Exception e){
+        //     System.out.print(e.getMessage());
+        // }
+
+       
+        
+        try( Scanner sc = new Scanner(new File("MyFile.txt"))){
+
+            String line;
+            while(sc.hasNext()){
+                line = sc.nextLine();
+                System.out.println(line);
+            }
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        /*
+         * if(file.delete()){
+         * System.out.println("File deleted");
+         * else{
+         * System.out.println("file not deleted")
+         * }}
+         * 
+         */
+    }
+}
+
+
+
 
 
 
