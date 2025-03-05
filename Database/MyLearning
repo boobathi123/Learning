@@ -498,6 +498,34 @@ select age_certificate,sum(movie_length) from movies group by age_certificate;
 
 
 
+--having
+
+select direct_id,sum(movie_length) from movies group by direct_id having sum(movie_length) >  200 order by 2 desc;
+
+--order of execution
+
+from
+
+where 
+
+group by
+
+
+having 
+
+select 
+
+distinct
+
+limit
+
+--handling the null database
+
+select coalesce (department,' no department') as department,
+count (salary) as total_employees from employee_test group by department order by deparment;
+
+
+--joins
 
 
 
