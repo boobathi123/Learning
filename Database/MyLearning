@@ -530,7 +530,37 @@ count (salary) as total_employees from employee_test group by department order b
 
 
 
+select * from directors d left join movies mv on d.director_id = mv.directors_id where d.nationality in ('American','chinese');
 
+--Get all the total revenues done by each films for each directors_id
+select d.first_name,d.last_name, sum(r.revenue_domestic+r.revenue_international) as "total_revenues" directors left join movies mv on mv.director_id = d.director_id left join movies_revenues r on r.movie_id = mv.movie_id group by d.first_name,d.last_name;
+order by 3 desc;
+
+--The union operator combines result set from two or more select statements into a single result set
+
+--To be able to use union;
+    - The order and number of the columns in the select list of all queries must be the same
+    - The data types must be compatibel too.
+    
+    
+select * from left_product union select * from right_product;
+
+--union all also allows the duplicate records as well
+
+
+select first_name,  
+        last_name,
+        date_of_birth,
+        'directors' as "tablename"
+from directors
+where 
+date_of_birth >'1970-12-31'
+union
+select first_name,
+        last_name,
+        date_of_birth,
+        'actors' as "tablename"
+from actors where date_of_birth > '1970-12-31' order by first_name;
 
 
 
