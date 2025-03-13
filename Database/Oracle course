@@ -1,1 +1,61 @@
 
+select concat('my name is',ename) from emp;
+
+--for converting the upper case
+
+select upper('hello') from emp;
+
+--using concatenation for multiple purpose
+
+select concat(concat(lower(ename),upper(' is the name')),concat(' and their job is: ',job)) from emp where deptno = 20;
+
+select * from emp where job = upper('manager');
+
+select substr('hello',2,2) as string;
+
+--lpad greates padding on the lefthand side
+
+select lpad('hello',10,'$');
+
+select ltrim('hhhhhhello','h') from dual;
+
+--round()
+
+select round(100.3456,2);
+
+
+select trunc(107.93843949,3) from dual;
+
+select sysdate from dual;
+
+select systimestamp from dual;
+
+--with the add months method we can add or subtract the months
+select add_months(sysdate,+3);
+
+--months between
+select months_between('12/15/2012','12/4/2013') from dual;
+
+select trunc(systimestamp,'year') from dual;
+
+
+select to_char(sysdate,'mm/dd/yyyy') from dual;
+
+select to_char(sysdate,'ddth "of" month, yyyy') from dual;
+
+select to_char(sal,'$99,999.99') from emp;
+
+--to_date function helps to converting something to date format values
+
+select add_months(to_date('2012-08-27','yyyy-mm-dd'),2)from dual;
+
+select to_date('3 of may, 2004','dd "of" Month,yyyy');
+
+
+--group by and having clause
+
+select avg(sal) , job from emp group by job;
+
+select job,count(*) from emp group by job;
+
+
